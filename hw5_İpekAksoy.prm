@@ -1,0 +1,40 @@
+*>>>>>>>>>>>>>>>>> parameters <<<<<<<<<<<<<<<<<<<<<<<
+!
+! ********* V(bond) = Kb(b - b0)**2
+BONDS
+!! Alkane standard C27 parameeters. Not modified from original. 
+QA        QA        300.00      1.5   ! 
+QA        QB        300.00      1.5   ! 
+QB        QB        300.00      1.5   ! 
+
+! ********* V(angle) = Ktheta(Theta - Theta0)**2
+ANGLES
+QA      QA     QA       34.500    110.10   22.53   2.179  !
+QA      QA     QB       34.500    110.10   22.53   2.179  !
+QA      QB     QA       34.500    110.10   22.53   2.179  !
+QA      QB     QB       34.500    110.10   22.53   2.179  !
+QB      QB     QB       34.500    110.10   22.53   2.179  !
+
+! ******** V(dihedral) = Kchi(1 + cos(n(chi) - delta))
+DIHEDRALS
+!QA    QA    QA     QA         0.20000    3     0.00 ! 
+X      QA    QA     X          0.20000    3     0.00 ! 
+X      QA    QB     X          0.20000    3     0.00 ! 
+X      QB    QB     X          0.20000    3     0.00 ! 
+
+
+!********* V(Lennard-Jones) = Eps,i,j[(Rmin,i,j/ri,j)**12 - 2(Rmin,i,j/ri,j)**6]
+NONBONDED  NBXMOD 5  ATOM CDIEL FSHIFT VATOM VDISTANCE VFSWITCH -
+CUTNB 14.0  CTOFNB 12.0  CTONNB 10.0  EPS 1.0  E14FAC 1.0  WMIN 1.5
+
+QA         0.0    -0.01    1.2347                ! 
+QB         0.0    -0.02    1.2347                ! 
+
+
+NBFIX
+QB    QA       -0.0350     1.2347                ! 
+
+END
+
+	
+	
